@@ -11,14 +11,14 @@ const KanjiProvider = ({children}) => {
     const [error, setError] = useState(null);
     const [grade, setGrade] = useState(1); // Use the custom hook for grade
     
-    // const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     useEffect(() => {
         console.log(grade);
         
         const fetchKanji = async () => {
             setLoadingSkeleton(true);
             try {
-                const response = await axios.get(`${API_URL}/grade-${grade}`);
+                const response = await axios.get(`${apiUrl}/grade-${grade}`);
                 
                 console.log("api called",response.data);
                 setKanji([...response.data]); // Create a new array reference

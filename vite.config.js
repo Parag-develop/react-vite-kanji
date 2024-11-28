@@ -1,26 +1,34 @@
-import { defineConfig, loadEnv } from 'vite';
-import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { loadEnv } from 'vite';
+
 export default defineConfig(({ mode }) => {
-    // Load environment variables from .env files based on the current mode
+    // Load environment variables
     const env = loadEnv(mode, process.cwd(), '');
 
     return {
         plugins: [react()],
-        base: '/', // Base URL for the application
-        define: {
-            // Define a global variable for the API URL
-            API_URL: JSON.stringify(env.VITE_API_URL || 'https://kanji-backend-3fvs.vercel.app'),
+        server: {
+            // Proxy only in development mode
+            proxy: mode === 'development' ? {
+                '/api': {
+                    target: 'http://localhost:5000', // Your local backend URL
+                    changeOrigin: true,
+                },
+            } : undefined,
         },
+        // Optionally set base for production if needed
+        base: env.VITE_API_URL || '/', // Set this in your .env file if necessary
     };
 });
-// For local development
+
+// // For local development
 // export default defineConfig({
 //     plugins: [react()],
 //     server: {
 //       proxy: {
-//         '/api': 'http://localhost:5000', // Adjust according to your Express server port
+//         '/api': 'http://localhost:5000', 
 //       },
 //     },
 //   });
