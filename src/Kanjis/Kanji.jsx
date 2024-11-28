@@ -7,7 +7,6 @@ import { Backdrop, CircularProgress, Skeleton,  } from '@mui/material';
 import { FavoritesContext } from '../Context/FavoritesProvider';
 import { KanjiContext } from '../Context/KanjiProvider';
 import CardsRender from './CardsRender';
-const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 
 const Kanji = () => {
@@ -19,16 +18,17 @@ const Kanji = () => {
     
     const { favorites } = useContext(FavoritesContext)
     const ModalCard = lazy(() => import('./ModalCard'));
-
-
+    
+    
+    // const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     // const BASE_URL = 'http://localhost:5000';
-
+    
     const handleCardClick = useCallback(async (char) => {
         setLoading(true);
         try {
             const [charResponse, exampleResponse] = await Promise.all([
-                axios.get(`${apiUrl}/${char}`),
-                axios.get(`${apiUrl}/example/${char}`)
+                axios.get(`${API_URL}/${char}`),
+                axios.get(`${API_URL}/example/${char}`)
             ]);
 
             setCharacterData(charResponse.data);
