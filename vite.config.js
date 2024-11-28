@@ -1,12 +1,7 @@
-
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { loadEnv } from 'vite';
 
 export default defineConfig(({ mode }) => {
-    // Load environment variables
-    const env = loadEnv(mode, process.cwd(), '');
-
     return {
         plugins: [react()],
         server: {
@@ -18,8 +13,8 @@ export default defineConfig(({ mode }) => {
                 },
             } : undefined,
         },
-        // Optionally set base for production if needed
-        base: env.VITE_API_URL || '/', // Set this in your .env file if necessary
+        // Set base for production if necessary
+        base: '/', // Default base URL for production
     };
 });
 

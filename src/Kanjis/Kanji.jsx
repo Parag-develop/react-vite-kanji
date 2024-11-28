@@ -20,7 +20,7 @@ const Kanji = () => {
     const ModalCard = lazy(() => import('./ModalCard'));
     
     
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const apiUrl = "https://kanji-backend-3fvs.vercel.app/";
     // const BASE_URL = 'http://localhost:5000';
     
     const handleCardClick = useCallback(async (char) => {

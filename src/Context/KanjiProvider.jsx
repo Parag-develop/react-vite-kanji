@@ -11,7 +11,7 @@ const KanjiProvider = ({children}) => {
     const [error, setError] = useState(null);
     const [grade, setGrade] = useState(1); // Use the custom hook for grade
     
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const apiUrl = "https://kanji-backend-3fvs.vercel.app/";
     useEffect(() => {
         console.log(grade);
         
