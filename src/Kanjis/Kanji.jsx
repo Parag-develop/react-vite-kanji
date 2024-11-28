@@ -20,15 +20,15 @@ const Kanji = () => {
     const ModalCard = lazy(() => import('./ModalCard'));
     
     
-    const apiUrl = "https://kanji-backend-3fvs.vercel.app/";
+    // const apiUrl = "https://kanji-backend-3fvs.vercel.app";
     // const BASE_URL = 'http://localhost:5000';
     
     const handleCardClick = useCallback(async (char) => {
         setLoading(true);
         try {
             const [charResponse, exampleResponse] = await Promise.all([
-                axios.get(`${apiUrl}/${char}`),
-                axios.get(`${apiUrl}/example/${char}`)
+                axios.get(`https://kanji-backend-3fvs.vercel.app/${char}`),
+                axios.get(`https://kanji-backend-3fvs.vercel.app/example/${char}`)
             ]);
 
             setCharacterData(charResponse.data);

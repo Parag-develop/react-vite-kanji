@@ -11,14 +11,14 @@ const KanjiProvider = ({children}) => {
     const [error, setError] = useState(null);
     const [grade, setGrade] = useState(1); // Use the custom hook for grade
     
-    const apiUrl = "https://kanji-backend-3fvs.vercel.app/";
+    // const apiUrl = "https://kanji-backend-3fvs.vercel.app";
     useEffect(() => {
         console.log(grade);
         
         const fetchKanji = async () => {
             setLoadingSkeleton(true);
             try {
-                const response = await axios.get(`${apiUrl}/grade-${grade}`);
+                const response = await axios.get(`https://kanji-backend-3fvs.vercel.app/grade-${grade}`);
                 
                 console.log("api called",response.data);
                 setKanji([...response.data]); // Create a new array reference
