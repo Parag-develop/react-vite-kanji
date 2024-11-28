@@ -9,7 +9,7 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "https://kanji-backend-3fvs.vercel.app/" 
+        "dest": "/" 
       }
     ]
   }
