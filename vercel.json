@@ -9,11 +9,6 @@
   
   "routes": [
     {
-      "rewrites": [
-        { "source": "/(.*)", "destination": "/" }
-      ]
-    },
-    {
       "src": "/api/(.*)",
       "dest": "https://kanji-backend-3fvs.vercel.app" 
       
