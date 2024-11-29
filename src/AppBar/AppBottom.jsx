@@ -17,6 +17,19 @@ import React, { useEffect, useState } from 'react'
 const AppBottom = () => {
   const location = useLocation();
 
+  useEffect(() => {
+    // Check if the current path is not the home route
+    if (location.pathname !== '/') {
+        // Get navigation entries
+        const entries = performance.getEntriesByType("navigation");
+
+        // Check if there's an entry and if it's of type "reload"
+        if (entries.length > 0 && entries[0].type === "reload") {
+            // Redirect to home route
+            window.location.replace('/'); // This will force a redirect to home
+        }
+    }
+}, [location.pathname]);
   
   
 
